@@ -5,11 +5,12 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Mathias Lipowski",
+      "name": "Mathias L.",
       "email": "dev@mixable.media"
     }
   ],
   "require": {
+    "php": ">=7.4"
   },
   "autoload": {
     "psr-4": {
