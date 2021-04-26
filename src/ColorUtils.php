@@ -1,10 +1,13 @@
 <?php
-/*
- * ColorUtils.php
+namespace Mixable;
+
+/**
+ * Class ColorUtils
  * License: MIT / BSD
  * Based on https://github.com/SimonWaldherr/ColorConverter.php
+ *
+ * @package Mixable
  */
-
 class ColorUtils
 {
     public static function rgb2hsl ($input)

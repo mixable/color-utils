@@ -1,0 +1,23 @@
+{
+  "name": "mixable/color-utils",
+  "description": "PHP utilities to convert any values between RGB, HSL, CMYK, YUV and HEX colors.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mathias Lipowski",
+      "email": "dev@mixable.media"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Mixable\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+    }
+  }
+}
