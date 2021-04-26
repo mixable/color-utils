@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Mixable\Color;
 
 /**
@@ -19,7 +21,7 @@ class Calculate
     public static function readableTextColorForBackgroundColor(string $hexColor): string
     {
         $c = Convert::hex2rgb($hexColor);
-        $brightness = (($c[0] * 299) + ($c[0] * 587) + ($c[0] * 114)) / 1000;
+        $brightness = (($c[0]*255 * 299) + ($c[0]*255 * 587) + ($c[0]*255 * 114)) / 1000;
 
         return $brightness < 127 ? '#ffffff' : '#000000';
     }
