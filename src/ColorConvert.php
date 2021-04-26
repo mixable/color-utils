@@ -2,13 +2,13 @@
 namespace Mixable;
 
 /**
- * Class ColorUtils
+ * Class ColorConvert
  * License: MIT / BSD
  * Based on https://github.com/SimonWaldherr/ColorConverter.php
  *
  * @package Mixable
  */
-class ColorUtils
+class ColorConvert
 {
     public static function rgb2hsl ($input)
     {
@@ -330,13 +330,13 @@ class ColorUtils
         if ($geregext !== null) {
             switch ($geregext[1]) {
             case '#':
-                return ColorUtils::colorconv($geregext[2], 'hex2rgb');
+                return ColorConvert::colorconv($geregext[2], 'hex2rgb');
             case 'rgb':
                 return [intval(trim($geregext[4]), 10), intval(trim($geregext[5]), 10), intval(trim($geregext[6]), 10)];
             case 'hsl':
-                return ColorUtils::colorconv([intval(trim($geregext[4]), 10), intval(trim($geregext[5]), 10), intval(trim($geregext[6]), 10)], 'hsl2rgb');
+                return ColorConvert::colorconv([intval(trim($geregext[4]), 10), intval(trim($geregext[5]), 10), intval(trim($geregext[6]), 10)], 'hsl2rgb');
             case 'yuv':
-                return ColorUtils::colorconv([intval(trim($geregext[4]), 10), intval(trim($geregext[5]), 10), intval(trim($geregext[6]), 10)], 'yuv2rgb');
+                return ColorConvert::colorconv([intval(trim($geregext[4]), 10), intval(trim($geregext[5]), 10), intval(trim($geregext[6]), 10)], 'yuv2rgb');
             default:
                 return false;
             }
@@ -349,91 +349,91 @@ class ColorUtils
         $mode = strtolower(trim($mode));
         switch ($mode) {
         case 'rgb2hsl':
-            $output = ColorUtils::rgb2hsl($input);
+            $output = ColorConvert::rgb2hsl($input);
             if($html) {
                 $output = 'hsl('.$output[0].','.$output[1].'%,'.$output[2].'%)';
             }
             break;
         case 'hsl2rgb':
-            $output = ColorUtils::hsl2rgb($input);
+            $output = ColorConvert::hsl2rgb($input);
             if($html) {
                 $output = 'rgb('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         case 'rgb2cmyk':
-            $output = ColorUtils::rgb2cmyk($input);
+            $output = ColorConvert::rgb2cmyk($input);
             if($html) {
                 $output = 'cmyk('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         case 'cmyk2rgb':
-            $output = ColorUtils::cmyk2rgb($input);
+            $output = ColorConvert::cmyk2rgb($input);
             if($html) {
                 $output = 'rgb('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         case 'hex2rgb':
-            $output = ColorUtils::hex2rgb($input);
+            $output = ColorConvert::hex2rgb($input);
             if($html) {
                 $output = 'rgb('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         case 'rgb2hex':
-            $output = ColorUtils::rgb2hex($input);
+            $output = ColorConvert::rgb2hex($input);
             if($html) {
                 $output = '#'.$output;
             }
             break;
         case 'rgb2yuv':
-            $output = ColorUtils::rgb2yuv($input);
+            $output = ColorConvert::rgb2yuv($input);
             if($html) {
                 $output = 'yuv('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         case 'yuv2rgb':
-            $output = ColorUtils::yuv2rgb($input);
+            $output = ColorConvert::yuv2rgb($input);
             if($html) {
                 $output = 'rgb('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         case 'rgb2hsv':
-            $output = ColorUtils::rgb2hsv($input);
+            $output = ColorConvert::rgb2hsv($input);
             if($html) {
                 $output = 'hsv('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         case 'hsv2rgb':
-            $output = ColorUtils::hsv2rgb($input);
+            $output = ColorConvert::hsv2rgb($input);
             if($html) {
                 $output = 'rgb('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         case 'hsl2hex':
-            $output = ColorUtils::rgb2hex(hsl2rgb($input));
+            $output = ColorConvert::rgb2hex(hsl2rgb($input));
             if($html) {
                 $output = '#'.$output;
             }
             break;
         case 'hex2hsl':
-            $output = ColorUtils::rgb2hsl(hex2rgb($input));
+            $output = ColorConvert::rgb2hsl(hex2rgb($input));
             if($html) {
                 $output = 'hsl('.$output[0].','.$output[1].'%,'.$output[2].'%)';
             }
             break;
         case 'complexity2int':
-            $output = ColorUtils::complexity2int($input);
+            $output = ColorConvert::complexity2int($input);
             if($html) {
                 $output = 'hsl('.$output[0].','.$output[1].'%,'.$output[2].'%)';
             }
             break;
         case 'int2rgb':
-            $output = ColorUtils::int2rgb($input);
+            $output = ColorConvert::int2rgb($input);
             if($html) {
                 $output = 'hsl('.$output[0].','.$output[1].'%,'.$output[2].'%)';
             }
             break;
         case 'complexity2rgb':
-            $output = ColorUtils::colorconv(colorconv($input, 'complexity2int'), 'int2rgb');
+            $output = ColorConvert::colorconv(colorconv($input, 'complexity2int'), 'int2rgb');
             break;
         case 'mixrgb':
             $r = intval(($input[0][0] + $input[1][0]) / 2, 10);
@@ -445,13 +445,13 @@ class ColorUtils
             }
             break;
         case 'parse':
-            $output = ColorUtils::parseColor($input);
+            $output = ColorConvert::parseColor($input);
             if($html) {
                 $output = 'rgb('.$output[0].','.$output[1].','.$output[2].')';
             }
             break;
         default:
-            $output = ColorUtils::colorconv($input, 'parse');
+            $output = ColorConvert::colorconv($input, 'parse');
             if($html) {
                 $output = 'rgb('.$output[0].','.$output[1].','.$output[2].')';
             }
