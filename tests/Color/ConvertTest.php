@@ -6,7 +6,9 @@ namespace Mixable\Test\TestCase\Color;
 use Mixable\Color\Convert;
 
 /**
- * App\Lib\Color Test Case
+ * Class ConvertTest
+ *
+ * @package Mixable\Test\TestCase\Color
  */
 class ConvertTest extends \PHPUnit\Framework\TestCase
 {

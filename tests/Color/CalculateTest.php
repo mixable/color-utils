@@ -6,7 +6,9 @@ namespace Mixable\Test\TestCase\Color;
 use Mixable\Color\Calculate;
 
 /**
- * App\Lib\Calculate Test Case
+ * Class CalculateTest
+ *
+ * @package Mixable\Test\TestCase\Color
  */
 class CalculateTest extends \PHPUnit\Framework\TestCase
 {
@@ -20,7 +22,7 @@ class CalculateTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($result, $expected);
 
         $result = Calculate::readableTextColorForBackgroundColor('#555555');
-        $expected = '#000000';
+        $expected = '#ffffff';
         $this->assertEquals($result, $expected);
 
         $result = Calculate::readableTextColorForBackgroundColor('#000000');
