@@ -201,9 +201,9 @@ class Convert
         $hexg = max(min(intval($input[1], 10), 255), 0);
         $hexb = max(min(intval($input[2], 10), 255), 0);
 
-        $hexr = $hexr > 15 ? base_convert($hexr, 10, 16) : '0' . base_convert($hexr, 10, 16);
-        $hexg = $hexg > 15 ? base_convert($hexg, 10, 16) : '0' . base_convert($hexg, 10, 16);
-        $hexb = $hexb > 15 ? base_convert($hexb, 10, 16) : '0' . base_convert($hexb, 10, 16);
+        $hexr = $hexr > 15 ? base_convert("$hexr", 10, 16) : '0' . base_convert("$hexr", 10, 16);
+        $hexg = $hexg > 15 ? base_convert("$hexg", 10, 16) : '0' . base_convert("$hexg", 10, 16);
+        $hexb = $hexb > 15 ? base_convert("$hexb", 10, 16) : '0' . base_convert("$hexb", 10, 16);
 
         return $hexr . $hexg . $hexb;
     }
