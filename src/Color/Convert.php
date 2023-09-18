@@ -175,9 +175,9 @@ class Convert
             $g = $r;
             $b = $r;
         } else if (strlen($input) === 3) {
-            $r = intval($values[0], 16);
-            $g = intval($values[1], 16);
-            $b = intval($values[2], 16);
+            $r = intval($values[0] . $values[0], 16);
+            $g = intval($values[1] . $values[1], 16);
+            $b = intval($values[2] . $values[2], 16);
         } else if (strlen($input) === 6) {
             $r = intval($values[0] . $values[1], 16);
             $g = intval($values[2] . $values[3], 16);
