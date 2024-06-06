@@ -27,7 +27,7 @@ class Calculate
 
     /**
      * Calculate a color that is readable on light and dark backgrounds.
-     * The color value is based on the given hex color.
+     * The color value is based on the given hex color. For the calculation, the equivalent HSL color value is used.
      * This will use the weighted W3C formula as described at:
      * @see https://mixable.blog/black-or-white-text-on-a-colour-background/
      *
