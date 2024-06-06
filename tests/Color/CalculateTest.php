@@ -17,16 +17,18 @@ class CalculateTest extends \PHPUnit\Framework\TestCase
      */
     public function testReadableTextColorForBackgroundColor()
     {
-        $result = Calculate::readableTextColorForBackgroundColor('#ffffff');
-        $expected = '#000000';
-        $this->assertEquals($result, $expected);
+        $this->assertEquals('#000000', Calculate::readableTextColorForBackgroundColor('#ffffff'));
+        $this->assertEquals('#ffffff', Calculate::readableTextColorForBackgroundColor('#555555'));
+        $this->assertEquals('#ffffff', Calculate::readableTextColorForBackgroundColor('#000000'));
+    }
 
-        $result = Calculate::readableTextColorForBackgroundColor('#555555');
-        $expected = '#ffffff';
-        $this->assertEquals($result, $expected);
-
-        $result = Calculate::readableTextColorForBackgroundColor('#000000');
-        $expected = '#ffffff';
-        $this->assertEquals($result, $expected);
+    /**
+     * @return void
+     */
+    public function testReadableColorForLightAndDarkBackground()
+    {
+        $this->assertEquals('be721b', Calculate::readableColorForLightAndDarkBackground('#f0c696'));
+        $this->assertEquals('00b5b5', Calculate::readableColorForLightAndDarkBackground('#73feff'));
+        $this->assertEquals('8f8f00', Calculate::readableColorForLightAndDarkBackground('#ffff00'));
     }
 }

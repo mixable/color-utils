@@ -13,16 +13,17 @@ namespace Mixable\Color;
 class Convert
 {
     /**
-     * Convert rgb to hsl
+     * Convert RGB to HSL and return integer values (h: 0...360, s: 0...100, l: 0...100).
      *
-     * @param array $input
-     * @return array
+     * @param array<int> $input
+     * @return array<int>
      */
     public static function rgb2hsl(array $input): array
     {
-        $r = max(min(intval($input[0], 10) / 255, 1), 0);
-        $g = max(min(intval($input[1], 10) / 255, 1), 0);
-        $b = max(min(intval($input[2], 10) / 255, 1), 0);
+        $r = max(min($input[0], 255), 0) / 255;
+        $g = max(min($input[1], 255), 0) / 255;
+        $b = max(min($input[2], 255), 0) / 255;
+
         $max = max($r, $g, $b);
         $min = min($r, $g, $b);
         $l = ($max + $min) / 2;
@@ -42,20 +43,20 @@ class Convert
             $h = $s = 0;
         }
 
-        return [round($h * 360), round($s * 100), round($l * 100)];
+        return [intval(round($h * 360)), intval(round($s * 100)), intval(round($l * 100))];
     }
 
     /**
-     * Convert hsl to rgb
+     * Convert HSL to RGB and return integer values (r: 0...255, g: 0...255, b: 0...255).
      *
-     * @param array $input
-     * @return array
+     * @param array<int> $input
+     * @return array<int>
      */
     public static function hsl2rgb(array $input): array
     {
-        $h = max(min(intval($input[0], 10), 360), 0) / 360;
-        $s = max(min(intval($input[1], 10), 100), 0) / 100;
-        $l = max(min(intval($input[2], 10), 100), 0) / 100;
+        $h = max(min($input[0], 360), 0) / 360;
+        $s = max(min($input[1], 100), 0) / 100;
+        $l = max(min($input[2], 100), 0) / 100;
 
         if ($l <= 0.5) {
             $v = $l * (1 + $s);
@@ -104,7 +105,7 @@ class Convert
                 break;
         }
 
-        return [round($r * 255), round($g * 255), round($b * 255)];
+        return [intval(round($r * 255)), intval(round($g * 255)), intval(round($b * 255))];
     }
 
     /**
@@ -155,6 +156,25 @@ class Convert
     }
 
     /**
+     * Convert rgb to hex
+     *
+     * @param array $input
+     * @return string
+     */
+    public static function rgb2hex(array $input): string
+    {
+        $hexr = max(min(intval($input[0], 10), 255), 0);
+        $hexg = max(min(intval($input[1], 10), 255), 0);
+        $hexb = max(min(intval($input[2], 10), 255), 0);
+
+        $hexr = $hexr > 15 ? base_convert("$hexr", 10, 16) : '0' . base_convert("$hexr", 10, 16);
+        $hexg = $hexg > 15 ? base_convert("$hexg", 10, 16) : '0' . base_convert("$hexg", 10, 16);
+        $hexb = $hexb > 15 ? base_convert("$hexb", 10, 16) : '0' . base_convert("$hexb", 10, 16);
+
+        return $hexr . $hexg . $hexb;
+    }
+
+    /**
      * Convert hex to rgb
      *
      * @param string $input
@@ -187,25 +207,6 @@ class Convert
         }
 
         return [$r, $g, $b];
-    }
-
-    /**
-     * Convert rgb to hex
-     *
-     * @param array $input
-     * @return string
-     */
-    public static function rgb2hex(array $input): string
-    {
-        $hexr = max(min(intval($input[0], 10), 255), 0);
-        $hexg = max(min(intval($input[1], 10), 255), 0);
-        $hexb = max(min(intval($input[2], 10), 255), 0);
-
-        $hexr = $hexr > 15 ? base_convert("$hexr", 10, 16) : '0' . base_convert("$hexr", 10, 16);
-        $hexg = $hexg > 15 ? base_convert("$hexg", 10, 16) : '0' . base_convert("$hexg", 10, 16);
-        $hexb = $hexb > 15 ? base_convert("$hexb", 10, 16) : '0' . base_convert("$hexb", 10, 16);
-
-        return $hexr . $hexg . $hexb;
     }
 
     /**
