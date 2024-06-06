@@ -12,4 +12,3 @@ You can install this package by using [composer](http://getcomposer.org).
 ```
 composer require mixable/color-utils
 ```
-

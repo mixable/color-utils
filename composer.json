@@ -3,6 +3,7 @@
   "description": "PHP utilities to convert any values between RGB, HSL, CMYK, YUV and HEX colors.",
   "minimum-stability": "stable",
   "license": "MIT",
+  "version": "1.0.5",
   "authors": [
     {
       "name": "Mathias L.",
